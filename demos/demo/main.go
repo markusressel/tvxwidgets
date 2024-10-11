@@ -138,8 +138,8 @@ func main() {
 	systemSparkline.SetDataTitleColor(tcell.ColorDarkOrange)
 	systemSparkline.SetLineColor(tcell.ColorSteelBlue)
 
-	iowaitData := []float64{4, 2, 1, 6, 3, 9, 1, 4, 2, 15, 14, 9, 8, 6, 10, 13, 15, 12, 10, 5, 3, 6, 1, 7, 10, 10, 14, 13, 6}
-	systemData := []float64{0, 0, 1, 2, 9, 5, 3, 1, 2, 0, 6, 3, 2, 2, 6, 8, 5, 2, 1, 5, 8, 6, 1, 4, 1, 1, 4, 3, 6}
+	iowaitData := []float64{4, 2, 1, 6, math.NaN(), math.NaN(), math.NaN(), 4, 2, 15, 14, math.NaN(), 8, 6, 10, math.NaN(), 15, 12, 10, math.NaN(), 3, 6, 1, 7, 10, 10, 14, 13, 6}
+	systemData := []float64{math.NaN(), 5, 1, 2, 9, 5, 3, math.NaN(), math.NaN(), 7, 6, 3, 2, 2, math.NaN(), 8, 5, 2, 1, 5, 8, 6, math.NaN(), 4, 1, 1, 4, 3, math.NaN()}
 
 	ioSparkLineData := func() []float64 {
 		for i := 0; i < 5; i++ {
