@@ -218,8 +218,8 @@ func main() {
 		newData[0] = make([]float64, n)
 		newData[1] = make([]float64, n)
 
-		newData[0] = rotate(data[0], -1)
-		newData[1] = rotate(data[1], -1)
+		newData[0] = rotate(data[0], 1)
+		newData[1] = rotate(data[1], 1)
 
 		return newData
 	}
@@ -334,19 +334,21 @@ func newBarChart() *tvxwidgets.BarChart {
 	return barGraph
 }
 
-func rotate(nums []float64, k int) []float64 {
-	if len(nums) == 0 {
-		return nums
+// rotate rotates the given slice by k positions.
+func rotate[T any](slice []T, k int) []T {
+	if len(slice) == 0 {
+		return slice
 	}
 
-	kAbs := int(math.Abs(float64(k)))
-
-	r := len(nums) - kAbs%len(nums)
+	var r int
 	if k > 0 {
-		nums = append(nums[r:], nums[:r]...)
+		r = len(slice) - k%len(slice)
 	} else {
-		nums = append(nums[kAbs:r], nums[r:]...)
+		kAbs := int(math.Abs(float64(k)))
+		r = kAbs % len(slice)
 	}
 
-	return nums
+	slice = append(slice[r:], slice[:r]...)
+
+	return slice
 }
