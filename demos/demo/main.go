@@ -95,13 +95,13 @@ func main() {
 		data[1] = make([]float64, n)
 		for i := 0; i < n; i++ {
 			if rand.Intn(10) > 2 {
-				data[0][i] = math.Sin(float64(i) / 5)
+				data[0][i] = math.Sin(float64(i)/5) * 10
 			} else {
 				data[0][i] = math.NaN()
 			}
 
 			if rand.Intn(10) > 2 {
-				data[1][i] = math.Cos(float64(i) / 5)
+				data[1][i] = math.Cos(float64(i)/5) * 5
 			} else {
 				data[1][i] = math.NaN()
 			}
