@@ -213,14 +213,9 @@ func main() {
 	}
 
 	moveSinData := func(data [][]float64) [][]float64 {
-		n := 220
 		newData := make([][]float64, 2)
-		newData[0] = make([]float64, n)
-		newData[1] = make([]float64, n)
-
 		newData[0] = rotate(data[0], -1)
 		newData[1] = rotate(data[1], -1)
-
 		return newData
 	}
 
