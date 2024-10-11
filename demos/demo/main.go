@@ -218,8 +218,8 @@ func main() {
 		newData[0] = make([]float64, n)
 		newData[1] = make([]float64, n)
 
-		newData[0] = rotate(data[0], 1)
-		newData[1] = rotate(data[1], 1)
+		newData[0] = rotate(data[0], -1)
+		newData[1] = rotate(data[1], -1)
 
 		return newData
 	}
