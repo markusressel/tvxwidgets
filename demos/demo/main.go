@@ -95,13 +95,13 @@ func main() {
 		data[1] = make([]float64, n)
 		for i := 0; i < n; i++ {
 			if rand.Intn(10) > 2 {
-				data[0][i] = math.Sin(float64(i)/5) * 10
+				data[0][i] = -100 + math.Sin(float64(i)/5)*10
 			} else {
 				data[0][i] = math.NaN()
 			}
 
 			if rand.Intn(10) > 2 {
-				data[1][i] = math.Cos(float64(i)/5) * 5
+				data[1][i] = -100 + math.Cos(float64(i)/5)*5
 			} else {
 				data[1][i] = math.NaN()
 			}
@@ -218,14 +218,8 @@ func main() {
 		newData[0] = make([]float64, n)
 		newData[1] = make([]float64, n)
 
-		for i := 0; i < n; i++ {
-			if i+1 < len(data[0]) {
-				newData[0][i] = data[0][i+1]
-			}
-			if i+1 < len(data[1]) {
-				newData[1][i] = data[1][i+1]
-			}
-		}
+		newData[0] = rotate(data[0], -1)
+		newData[1] = rotate(data[1], -1)
 
 		return newData
 	}
@@ -338,4 +332,21 @@ func newBarChart() *tvxwidgets.BarChart {
 	barGraph.AddBar("eth3", 100, tcell.ColorOrange)
 
 	return barGraph
+}
+
+func rotate(nums []float64, k int) []float64 {
+	if len(nums) == 0 {
+		return nums
+	}
+
+	kAbs := int(math.Abs(float64(k)))
+
+	r := len(nums) - kAbs%len(nums)
+	if k > 0 {
+		nums = append(nums[r:], nums[:r]...)
+	} else {
+		nums = append(nums[kAbs:r], nums[r:]...)
+	}
+
+	return nums
 }
