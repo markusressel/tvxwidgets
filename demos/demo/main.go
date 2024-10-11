@@ -94,8 +94,17 @@ func main() {
 		data[0] = make([]float64, n)
 		data[1] = make([]float64, n)
 		for i := 0; i < n; i++ {
-			data[0][i] = 1 + math.Sin(float64(i)/5)
-			data[1][i] = 1 + math.Cos(float64(i)/5)
+			if rand.Intn(10) > 2 {
+				data[0][i] = math.Sin(float64(i) / 5)
+			} else {
+				data[0][i] = math.NaN()
+			}
+
+			if rand.Intn(10) > 2 {
+				data[1][i] = math.Cos(float64(i) / 5)
+			} else {
+				data[1][i] = math.NaN()
+			}
 		}
 		return data
 	}()
@@ -105,8 +114,8 @@ func main() {
 
 	dmLineChart := newDotModeLineChart()
 
-	sampleData1 := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	sampleData2 := []float64{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	sampleData1 := []float64{1, 2, math.NaN(), math.NaN(), 5, 6, math.NaN(), 8, math.NaN(), 10}
+	sampleData2 := []float64{10, 9, math.NaN(), math.NaN(), 6, 5, math.NaN(), math.NaN(), 2, 1}
 	dotChartData := [][]float64{sampleData1}
 	dotChartData[0] = append(dotChartData[0], sampleData2...)
 	dotChartData[0] = append(dotChartData[0], sampleData1[:5]...)
