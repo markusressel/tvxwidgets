@@ -110,6 +110,7 @@ func main() {
 	}()
 
 	bmLineChart := newBrailleModeLineChart()
+	bmLineChart.SetYAxisAutoScaleMin(true)
 	bmLineChart.SetData(sinData)
 
 	dmLineChart := newDotModeLineChart()
